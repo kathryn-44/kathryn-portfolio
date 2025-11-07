@@ -28,11 +28,98 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--gradient-soft);
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ===== SAME BACKGROUND CIRCLES ===== */
+    .education-bg-elements {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gradient-bg);
+      animation: sophisticated-float 12s ease-in-out infinite;
+      filter: blur(20px);
+    }
+
+    .circle-1 {
+      width: 600px;
+      height: 600px;
+      top: -300px;
+      right: -200px;
+      animation-delay: 0s;
+      opacity: 0.12;
+    }
+
+    .circle-2 {
+      width: 550px;
+      height: 550px;
+      bottom: -250px;
+      left: -150px;
+      animation-delay: 4s;
+      opacity: 0.12;
+    }
+
+    .circle-3 {
+      width: 300px;
+      height: 300px;
+      top: 20%;
+      left: 5%;
+      animation-delay: 2s;
+      opacity: 0.15;
+    }
+
+    .circle-4 {
+      width: 250px;
+      height: 250px;
+      bottom: 25%;
+      right: 8%;
+      animation-delay: 6s;
+      opacity: 0.15;
+    }
+
+    .circle-5 {
+      width: 150px;
+      height: 150px;
+      top: 65%;
+      left: 15%;
+      animation-delay: 8s;
+      opacity: 0.18;
+    }
+
+    .circle-6 {
+      width: 120px;
+      height: 120px;
+      top: 15%;
+      right: 20%;
+      animation-delay: 10s;
+      opacity: 0.18;
+    }
+
+    @keyframes sophisticated-float {
+      0%, 100% { 
+        transform: translate(0, 0) scale(1) rotate(0deg);
+      }
+      25% { 
+        transform: translate(20px, -30px) scale(1.1) rotate(2deg);
+      }
+      50% { 
+        transform: translate(-15px, 20px) scale(0.95) rotate(-2deg);
+      }
+      75% { 
+        transform: translate(10px, 15px) scale(1.05) rotate(1deg);
+      }
     }
 
     .education-container {
@@ -40,15 +127,18 @@
       backdrop-filter: blur(20px);
       border-radius: 25px;
       padding: 50px;
-      max-width: 800px;
-      width: 100%;
+      max-width: 950px; /* Wider container */
+      width: 90%;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 2;
+      margin: 40px auto; /* Center the container */
     }
 
     .education-header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
     .education-header h1 {
@@ -58,7 +148,7 @@
       background-clip: text;
       font-size: 3rem;
       font-weight: 700;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .education-header p {
@@ -68,20 +158,21 @@
 
     .timeline {
       position: relative;
+      display: grid;
+      gap: 20px; /* Reduced gap to fit everything */
     }
 
     .timeline-item {
       background: white;
       border-radius: 15px;
-      padding: 30px;
-      margin-bottom: 25px;
+      padding: 25px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       border-left: 5px solid var(--purple-primary);
       transition: all 0.3s ease;
     }
 
     .timeline-item:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     }
 
@@ -102,16 +193,29 @@
     }
 
     .school-name {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: #2c3e50;
       margin-bottom: 8px;
     }
 
+    .school-name a {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .school-name a:hover {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     .school-period {
       color: var(--purple-primary);
       font-weight: 500;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       font-size: 1rem;
     }
 
@@ -122,11 +226,11 @@
     }
 
     .achievements li {
-      padding: 8px 0;
+      padding: 6px 0;
       padding-left: 25px;
       position: relative;
       color: #495057;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
     .achievements li:before {
@@ -140,16 +244,16 @@
     .navigation-buttons {
       display: flex;
       justify-content: space-between;
-      margin-top: 40px;
+      margin-top: 30px;
     }
 
     .nav-button {
       background: var(--gradient-bg);
       color: white;
       border: none;
-      padding: 15px 30px;
+      padding: 12px 25px;
       border-radius: 50px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 500;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -215,6 +319,7 @@
       .education-container {
         padding: 30px 20px;
         margin: 20px;
+        width: 85%;
       }
       
       .education-header h1 {
@@ -224,11 +329,29 @@
       .sidebar {
         right: 15px;
       }
+      
+      .school-name {
+        font-size: 1.2rem;
+      }
+      
+      .achievements li {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
 
 <body>
+  <!-- Background Circles -->
+  <div class="education-bg-elements">
+    <div class="floating-circle circle-1"></div>
+    <div class="floating-circle circle-2"></div>
+    <div class="floating-circle circle-3"></div>
+    <div class="floating-circle circle-4"></div>
+    <div class="floating-circle circle-5"></div>
+    <div class="floating-circle circle-6"></div>
+  </div>
+
   <!-- Sidebar Navigation -->
   <nav class="sidebar">
     <ul class="nav-links">
@@ -255,7 +378,9 @@
     <div class="timeline">
       <!-- University -->
       <div class="timeline-item university">
-        <div class="school-name">University of the Cordilleras</div>
+        <div class="school-name">
+          <a href="https://www.uc-bcf.edu.ph/" target="_blank">University of the Cordilleras</a>
+        </div>
         <div class="school-period">2025–2028</div>
         <ul class="achievements">
           <li>Bachelor of Science in Computer Science</li>
@@ -264,7 +389,9 @@
 
       <!-- High School -->
       <div class="timeline-item high-school">
-        <div class="school-name">University of Baguio Science High School</div>
+        <div class="school-name">
+          <a href="https://shs.ubaguio.edu/?_gl=1*1cr1y9z*_ga*MTI2NTUxNDA2Mi4xNzYyNTE4Mzk2*_ga_3H1RGXJBZW*czE3NjI1MTgzOTYkbzEkZzEkdDE3NjI1MTg0MTQkajQyJGwwJGgw" target="_blank">University of Baguio Science High School</a>
+        </div>
         <div class="school-period">2023–2025</div>
         <ul class="achievements">
           <li>Grade 11: With Honors</li>
@@ -274,7 +401,9 @@
 
       <!-- Middle School -->
       <div class="timeline-item middle-school">
-        <div class="school-name">Berkeley School Baguio</div>
+        <div class="school-name">
+          <a href="https://berkeley.edu.ph/" target="_blank">Berkeley School Baguio</a>
+        </div>
         <div class="school-period">2016–2023</div>
         <ul class="achievements">
           <li>Grades 4–9: With Honors</li>
