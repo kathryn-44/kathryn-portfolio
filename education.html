@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Kathryn Fajardo - Education</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Same CSS and vendor files as index.html -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* Same styles as index.html */
+    :root {
+      --orange-primary: #FF9A8B;
+      --purple-primary: #A18CD1;
+      --pink-accent: #FF6B9C;
+      --gradient-bg: linear-gradient(135deg, #FF9A8B 0%, #FF6B9C 50%, #A18CD1 100%);
+      --gradient-text: linear-gradient(135deg, #FF9A8B 0%, #A18CD1 100%);
+      --gradient-soft: linear-gradient(135deg, rgba(255, 154, 139, 0.15) 0%, rgba(161, 140, 209, 0.15) 100%);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--gradient-soft);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .education-container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 50px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .education-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .education-header h1 {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .education-header p {
+      color: #6c757d;
+      font-size: 1.2rem;
+    }
+
+    .timeline {
+      position: relative;
+    }
+
+    .timeline-item {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-left: 5px solid var(--purple-primary);
+      transition: all 0.3s ease;
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .timeline-item.university {
+      border-left-color: var(--pink-accent);
+    }
+
+    .timeline-item.high-school {
+      border-left-color: var(--purple-primary);
+    }
+
+    .timeline-item.middle-school {
+      border-left-color: #FF9A8B;
+    }
+
+    .timeline-item.elementary {
+      border-left-color: #A18CD1;
+    }
+
+    .school-name {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .school-period {
+      color: var(--purple-primary);
+      font-weight: 500;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    .achievements {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .achievements li {
+      padding: 8px 0;
+      padding-left: 25px;
+      position: relative;
+      color: #495057;
+      font-size: 1.1rem;
+    }
+
+    .achievements li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--pink-accent);
+      font-weight: bold;
+    }
+
+    .navigation-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .nav-button {
+      background: var(--gradient-bg);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(255, 154, 139, 0.3);
+    }
+
+    .nav-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(255, 154, 139, 0.4);
+      color: white;
+    }
+
+    /* Same sidebar styles */
+    .sidebar {
+      position: fixed;
+      top: 50%;
+      right: 30px;
+      transform: translateY(-50%);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 20px 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      text-decoration: none;
+      color: #6c757d;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple-primary);
+      background: rgba(161, 140, 209, 0.1);
+      transform: scale(1.1);
+    }
+
+    .nav-links a.active {
+      background: var(--gradient-bg);
+      color: white;
+      box-shadow: 0 5px 15px rgba(255, 154, 139, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .education-container {
+        padding: 30px 20px;
+        margin: 20px;
+      }
+      
+      .education-header h1 {
+        font-size: 2.5rem;
+      }
+      
+      .sidebar {
+        right: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <ul class="nav-links">
+      <li>
+        <a href="index.html">
+          <i class="bi bi-house nav-icon"></i>
+        </a>
+      </li>
+      <li>
+        <a href="education.html" class="active">
+          <i class="bi bi-mortarboard nav-icon"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Education Content -->
+  <div class="education-container">
+    <div class="education-header">
+      <h1>Educational Attainment</h1>
+      <p>My academic journey and achievements</p>
+    </div>
+
+    <div class="timeline">
+      <!-- University -->
+      <div class="timeline-item university">
+        <div class="school-name">University of the Cordilleras</div>
+        <div class="school-period">2025–2028</div>
+        <ul class="achievements">
+          <li>Bachelor of Science in Computer Science</li>
+        </ul>
+      </div>
+
+      <!-- High School -->
+      <div class="timeline-item high-school">
+        <div class="school-name">University of Baguio Science High School</div>
+        <div class="school-period">2023–2025</div>
+        <ul class="achievements">
+          <li>Grade 11: With Honors</li>
+          <li>Grade 12: With High Honors</li>
+        </ul>
+      </div>
+
+      <!-- Middle School -->
+      <div class="timeline-item middle-school">
+        <div class="school-name">Berkeley School Baguio</div>
+        <div class="school-period">2016–2023</div>
+        <ul class="achievements">
+          <li>Grades 4–9: With Honors</li>
+          <li>Grade 10: With High Honors</li>
+        </ul>
+      </div>
+
+      <!-- Elementary -->
+      <div class="timeline-item elementary">
+        <div class="school-name">Doña Aurora Elementary School</div>
+        <div class="school-period">2013–2016</div>
+        <ul class="achievements">
+          <li>Recognized as Best in English (2013-2016)</li>
+          <li>Ranked within Top 10 (2013-2016)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="navigation-buttons">
+      <a href="index.html" class="nav-button">← Back Home</a>
+      <a href="index.html" class="nav-button">Home →</a>
+    </div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
