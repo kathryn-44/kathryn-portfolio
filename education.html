@@ -129,21 +129,21 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       border-radius: 25px;
-      padding: 40px; /* Reduced padding */
-      max-width: 1000px; /* Even wider */
-      width: 95%; /* Use more screen space */
+      padding: 40px;
+      max-width: 1100px; /* Wider to accommodate logos */
+      width: 95%;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       position: relative;
       z-index: 2;
       margin: 20px auto;
-      max-height: 95vh; /* Limit height to viewport */
-      overflow: hidden; /* Prevent scrolling */
+      max-height: 95vh;
+      overflow: hidden;
     }
 
     .education-header {
       text-align: center;
-      margin-bottom: 30px; /* Reduced margin */
+      margin-bottom: 30px;
     }
 
     .education-header h1 {
@@ -151,31 +151,33 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      font-size: 2.5rem; /* Smaller heading */
+      font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 8px;
     }
 
     .education-header p {
       color: #6c757d;
-      font-size: 1.1rem; /* Smaller subheading */
+      font-size: 1.1rem;
     }
 
     .timeline-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2-column layout */
-      gap: 20px; /* Compact gap */
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
       margin-bottom: 25px;
     }
 
     .timeline-item {
       background: white;
       border-radius: 12px;
-      padding: 20px; /* Reduced padding */
+      padding: 20px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
       border-left: 4px solid var(--purple-primary);
       transition: all 0.3s ease;
       height: fit-content;
+      display: flex;
+      flex-direction: column;
     }
 
     .timeline-item:hover {
@@ -199,11 +201,33 @@
       border-left-color: #A18CD1;
     }
 
+    /* School Logo Styles */
+    .school-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      gap: 15px;
+    }
+
+    .school-logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 2px solid #f8f9fa;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    .school-info {
+      flex: 1;
+    }
+
     .school-name {
-      font-size: 1.1rem; /* Smaller font */
+      font-size: 1.1rem;
       font-weight: 600;
       color: #2c3e50;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       line-height: 1.3;
     }
 
@@ -223,8 +247,8 @@
     .school-period {
       color: var(--purple-primary);
       font-weight: 500;
-      margin-bottom: 10px;
-      font-size: 0.9rem; /* Smaller font */
+      margin-bottom: 0;
+      font-size: 0.9rem;
     }
 
     .achievements {
@@ -234,11 +258,11 @@
     }
 
     .achievements li {
-      padding: 4px 0; /* Reduced padding */
+      padding: 4px 0;
       padding-left: 20px;
       position: relative;
       color: #495057;
-      font-size: 0.9rem; /* Smaller font */
+      font-size: 0.9rem;
       line-height: 1.3;
     }
 
@@ -261,9 +285,9 @@
       background: var(--gradient-bg);
       color: white;
       border: none;
-      padding: 10px 20px; /* Smaller button */
+      padding: 10px 20px;
       border-radius: 50px;
-      font-size: 0.9rem; /* Smaller font */
+      font-size: 0.9rem;
       font-weight: 500;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -337,8 +361,13 @@
       }
       
       .timeline-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr;
         gap: 15px;
+      }
+      
+      .school-logo {
+        width: 40px;
+        height: 40px;
       }
       
       .sidebar {
@@ -379,16 +408,21 @@
   <div class="education-container">
     <div class="education-header">
       <h1>Educational Attainment</h1>
-      <p>Key educational milestones and notable honors</p>
+      <p>My academic journey and achievements</p>
     </div>
 
     <div class="timeline-grid">
       <!-- University -->
       <div class="timeline-item university">
-        <div class="school-name">
-          <a href="https://www.uc-bcf.edu.ph/" target="_blank">University of the Cordilleras</a>
+        <div class="school-header">
+          <img src="assets/img/uc-logo.png" alt="University of the Cordilleras" class="school-logo">
+          <div class="school-info">
+            <div class="school-name">
+              <a href="https://www.uc-bcf.edu.ph/" target="_blank">University of the Cordilleras</a>
+            </div>
+            <div class="school-period">2025–Ongoing</div>
+          </div>
         </div>
-        <div class="school-period">2025–Ongoing</div>
         <ul class="achievements">
           <li>Bachelor of Science in Computer Science</li>
         </ul>
@@ -396,10 +430,15 @@
 
       <!-- High School -->
       <div class="timeline-item high-school">
-        <div class="school-name">
-          <a href="https://shs.ubaguio.edu/?_gl=1*1cr1y9z*_ga*MTI2NTUxNDA2Mi4xNzYyNTE4Mzk2*_ga_3H1RGXJBZW*czE3NjI1MTgzOTYkbzEkZzEkdDE3NjI1MTg0MTQkajQyJGwwJGgw" target="_blank">University of Baguio Science High School</a>
+        <div class="school-header">
+          <img src="assets/img/ub-logo.png" alt="University of Baguio Science High School" class="school-logo">
+          <div class="school-info">
+            <div class="school-name">
+              <a href="https://shs.ubaguio.edu/?_gl=1*1cr1y9z*_ga*MTI2NTUxNDA2Mi4xNzYyNTE4Mzk2*_ga_3H1RGXJBZW*czE3NjI1MTgzOTYkbzEkZzEkdDE3NjI1MTg0MTQkajQyJGwwJGgw" target="_blank">University of Baguio Science High School</a>
+            </div>
+            <div class="school-period">2023–2025</div>
+          </div>
         </div>
-        <div class="school-period">2023–2025</div>
         <ul class="achievements">
           <li>Grade 11: With Honors</li>
           <li>Grade 12: With High Honors</li>
@@ -408,10 +447,15 @@
 
       <!-- Middle School -->
       <div class="timeline-item middle-school">
-        <div class="school-name">
-          <a href="https://berkeley.edu.ph/" target="_blank">Berkeley School Baguio</a>
+        <div class="school-header">
+          <img src="assets/img/berkeley-logo.png" alt="Berkeley School Baguio" class="school-logo">
+          <div class="school-info">
+            <div class="school-name">
+              <a href="https://berkeley.edu.ph/" target="_blank">Berkeley School Baguio</a>
+            </div>
+            <div class="school-period">2016–2023</div>
+          </div>
         </div>
-        <div class="school-period">2016–2023</div>
         <ul class="achievements">
           <li>Grades 4–9: With Honors</li>
           <li>Grade 10: With High Honors</li>
@@ -420,8 +464,13 @@
 
       <!-- Elementary -->
       <div class="timeline-item elementary">
-        <div class="school-name">Doña Aurora Elementary School</div>
-        <div class="school-period">2013–2016</div>
+        <div class="school-header">
+          <img src="assets/img/dnaurora-logo.png" alt="Doña Aurora Elementary School" class="school-logo">
+          <div class="school-info">
+            <div class="school-name">Doña Aurora Elementary School</div>
+            <div class="school-period">2013–2016</div>
+          </div>
+        </div>
         <ul class="achievements">
           <li>Recognized as Best in English (2013-2016)</li>
           <li>Ranked within Top 10 (2013-2016)</li>
@@ -439,5 +488,3 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
