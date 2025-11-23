@@ -238,6 +238,42 @@
       box-shadow: 0 5px 15px rgba(255, 154, 139, 0.3);
     }
 
+
+        .nav-links .nav-tooltip {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .nav-links .nav-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -5px;
+      transform: translateY(-50%);
+      border-left: 5px solid rgba(0, 0, 0, 0.8);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+
+    .nav-links a:hover .nav-tooltip {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
     @media (max-width: 1024px) {
       .family-grid {
         grid-template-columns: 1fr;
@@ -296,21 +332,25 @@
       <li>
         <a href="index.html">
           <i class="bi bi-house nav-icon"></i>
+          <span class="nav-tooltip">HOME</span>
         </a>
       </li>
       <li>
         <a href="education.html">
           <i class="bi bi-mortarboard nav-icon"></i>
+          <span class="nav-tooltip">EDUCATION</span>
         </a>
       </li>
       <li>
         <a href="achievements.html">
           <i class="bi bi-trophy nav-icon"></i>
+          <span class="nav-tooltip">ACHIEVEMENTS</span>
         </a>
       </li>
       <li>
         <a href="family.html" class="active">
           <i class="bi bi-people nav-icon"></i>
+          <span class="nav-tooltip">FAMILY</span>
         </a>
       </li>
     </ul>
@@ -359,4 +399,3 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
