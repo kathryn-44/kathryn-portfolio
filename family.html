@@ -120,29 +120,13 @@
       gap: 30px;
       margin-bottom: 25px;
       flex: 1;
-      overflow-y: auto;
-      padding-right: 10px; /* Space for scrollbar */
+      /* REMOVED: overflow-y: auto; */
+      /* REMOVED: padding-right: 10px; */
+      overflow: hidden; /* Prevent scrolling */
       align-items: start;
     }
 
-    /* Custom scrollbar for family grid */
-    .family-grid::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .family-grid::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 10px;
-    }
-
-    .family-grid::-webkit-scrollbar-thumb {
-      background: var(--purple-primary);
-      border-radius: 10px;
-    }
-
-    .family-grid::-webkit-scrollbar-thumb:hover {
-      background: var(--pink-accent);
-    }
+    /* REMOVED: Custom scrollbar styles since we're removing scrolling */
 
     .family-member {
       background: white;
@@ -408,7 +392,7 @@
   <div class="family-container">
     <div class="family-header">
       <h1>My Family</h1>
-      <p>My greatest inspiration and supporters</p>
+      <p>My greatest reasons</p>
     </div>
 
     <div class="family-grid">
