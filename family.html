@@ -37,6 +37,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden; /* Prevent scrolling */
     }
 
     /* Background Circles */
@@ -72,25 +73,30 @@
       75% { transform: translate(10px, 15px) scale(1.05) rotate(1deg); }
     }
 
+    /* Updated family container for larger size */
     .family-container {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(20px);
       border-radius: 25px;
-      padding: 35px;
-      max-width: 1100px;
-      width: 95%;
+      padding: 40px;
+      width: 90%;
+      height: 90vh;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       position: relative;
       z-index: 2;
-      margin: 20px auto;
-      max-height: 95vh;
-      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      /* Center the container both vertically and horizontally */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .family-header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .family-header h1 {
@@ -98,27 +104,50 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      font-size: 2.3rem;
+      font-size: 2.8rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .family-header p {
       color: #6c757d;
-      font-size: 1rem;
+      font-size: 1.3rem;
     }
 
     .family-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 30px;
       margin-bottom: 25px;
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 10px; /* Space for scrollbar */
+      align-items: start;
+    }
+
+    /* Custom scrollbar for family grid */
+    .family-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .family-grid::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+    }
+
+    .family-grid::-webkit-scrollbar-thumb {
+      background: var(--purple-primary);
+      border-radius: 10px;
+    }
+
+    .family-grid::-webkit-scrollbar-thumb:hover {
+      background: var(--pink-accent);
     }
 
     .family-member {
       background: white;
-      border-radius: 15px;
-      padding: 20px;
+      border-radius: 20px;
+      padding: 30px;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
       border-top: 4px solid var(--purple-primary);
       transition: all 0.3s ease;
@@ -127,8 +156,8 @@
     }
 
     .family-member:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
 
     .family-member.mom { border-top-color: var(--pink-accent); }
@@ -136,50 +165,55 @@
     .family-member.sister { border-top-color: #FF9A8B; }
 
     .member-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 20px;
+      width: 220px;
+      height: 220px;
+      border-radius: 25px;
       object-fit: cover;
-      margin: 0 auto 15px;
+      margin: 0 auto 20px;
       border: 4px solid #f8f9fa;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       display: block;
     }
 
     .member-name {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 600;
       color: #2c3e50;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .member-relation {
       color: var(--purple-primary);
       font-weight: 500;
-      font-size: 0.9rem;
-      margin-bottom: 10px;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
     }
 
     .member-description {
       color: #495057;
-      font-size: 0.85rem;
-      line-height: 1.4;
+      font-size: 1rem;
+      line-height: 1.5;
       margin: 0;
     }
 
+    /* Updated navigation buttons positioning - outside container */
     .navigation-buttons {
       display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
+      justify-content: flex-end;
+      gap: 15px;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
     }
 
     .nav-button {
       background: var(--gradient-bg);
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 12px 25px;
       border-radius: 50px;
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 500;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -241,8 +275,7 @@
       box-shadow: 0 5px 15px rgba(255, 154, 139, 0.3);
     }
 
-
-        .nav-links .nav-tooltip {
+    .nav-links .nav-tooltip {
       position: absolute;
       right: 60px;
       top: 50%;
@@ -276,43 +309,49 @@
       visibility: visible;
     }
 
-
     @media (max-width: 1024px) {
       .family-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 25px;
       }
       
       .member-photo {
-        width: 150px;
-        height: 150px;
-      }
-      
-      .family-container {
-        padding: 25px 20px;
-        max-height: 90vh;
-        overflow-y: auto;
+        width: 200px;
+        height: 200px;
       }
     }
 
     @media (max-width: 768px) {
       .family-container {
-        padding: 20px 15px;
-        margin: 15px;
-        width: 90%;
+        padding: 25px 15px;
+        width: 95%;
+        height: 95vh;
       }
       
       .family-header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+      }
+      
+      .family-header p {
+        font-size: 1.1rem;
       }
       
       .member-photo {
-        width: 140px;
-        height: 140px;
+        width: 180px;
+        height: 180px;
+      }
+      
+      .member-name {
+        font-size: 1.3rem;
       }
       
       .sidebar {
         right: 15px;
+      }
+      
+      .navigation-buttons {
+        right: 15px;
+        bottom: 15px;
       }
     }
   </style>
@@ -377,7 +416,7 @@
       <div class="family-member mom">
         <img src="assets/img/mom-photo.png" alt="My Mom" class="member-photo">
         <div class="member-name">My Mom</div>
-        <div class="member-relation">Mother</div>
+        <div class="member-relation">Kathereen Hyacinth Fajardo</div>
         <p class="member-description">My greatest supporter and inspiration.</p>
       </div>
 
@@ -385,7 +424,7 @@
       <div class="family-member father">
         <img src="assets/img/father-photo.png" alt="My Father-Figure" class="member-photo">
         <div class="member-name">My Father-Figure</div>
-        <div class="member-relation">Grandfather</div>
+        <div class="member-relation">Jethro Fajardo</div>
         <p class="member-description">A constant source of guidance and support.</p>
       </div>
 
@@ -393,20 +432,19 @@
       <div class="family-member sister">
         <img src="assets/img/sibling-photo.png" alt="My Twin Sister" class="member-photo">
         <div class="member-name">My Sibling</div>
-        <div class="member-relation">Twin Sister</div>
+        <div class="member-relation">Kathryz Fajardo</div>
         <p class="member-description">My lifelong companion and closest confidante. Her nickname is "B".</p>
       </div>
     </div>
+  </div>
 
-    <div class="navigation-buttons">
-      <a href="achievements.html" class="nav-button">← Previous</a>
-      <a href="batchmates.html" class="nav-button">Next →</a>
-    </div>
+  <!-- Navigation Buttons - Now outside the container -->
+  <div class="navigation-buttons">
+    <a href="achievements.html" class="nav-button">← Previous</a>
+    <a href="batchmates.html" class="nav-button">Next →</a>
   </div>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
