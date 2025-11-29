@@ -177,6 +177,14 @@
       margin-bottom: 20px !important;
     }
     
+    /* NEW: Next Page Button positioned in lower right corner */
+    .next-page-container {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      z-index: 10;
+    }
+    
     .cta-button {
      margin-top: 10px !important; /* smaller gap above button */
     }
@@ -402,7 +410,6 @@
         font-size: 1.5rem;
         margin: 0 8px;
       }
-    }
       
       .sidebar {
         right: 15px;
@@ -412,6 +419,17 @@
       .nav-links a {
         width: 45px;
         height: 45px;
+      }
+      
+      /* NEW: Responsive positioning for next page button */
+      .next-page-container {
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .cta-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -481,9 +499,9 @@
         
         <p>
           I am a passionate Computer Science scholar from the University of the Cordilleras who aims to reshape how Asian women are represented in the tech industry. 
-          I love blending logic with artistry, whether I’m coding, designing, or editing projects that bring ideas to life.
+          I love blending logic with artistry, whether I'm coding, designing, or editing projects that bring ideas to life.
           I believe that diversity fuels innovation and strive to combine analytical precision with creative expression in everything I do.
-          For me, tech isn’t just about code, it’s about creativity, connection, and making things that truly click.
+          For me, tech isn't just about code, it's about creativity, connection, and making things that truly click.
         </p>
 
         <div class="social-links">
@@ -492,9 +510,12 @@
           <a href="https://github.com/kathryn-44"><i class="bi bi-github"></i></a>
           <a href="mailto:kbf0697@students.uc-bcf.edu.ph"><i class="bi bi-envelope"></i></a>
         </div>
-
-        <a href="education.html" class="cta-button">Next Page</a>
       </div>
+    </div>
+    
+    <!-- NEW: Next Page Button positioned in lower right corner -->
+    <div class="next-page-container">
+      <a href="education.html" class="cta-button">Next</a>
     </div>
     
   </section><!-- End Hero -->
