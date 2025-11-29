@@ -176,28 +176,12 @@
       gap: 25px;
       margin-bottom: 25px;
       flex: 1;
-      overflow-y: auto;
-      padding-right: 10px; /* Space for scrollbar */
+      /* REMOVED: overflow-y: auto; */
+      /* REMOVED: padding-right: 10px; */
+      overflow: hidden; /* Prevent scrolling */
     }
 
-    /* Custom scrollbar for timeline grid */
-    .timeline-grid::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .timeline-grid::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.05);
-      border-radius: 10px;
-    }
-
-    .timeline-grid::-webkit-scrollbar-thumb {
-      background: var(--purple-primary);
-      border-radius: 10px;
-    }
-
-    .timeline-grid::-webkit-scrollbar-thumb:hover {
-      background: var(--pink-accent);
-    }
+    /* REMOVED: Custom scrollbar styles since we're removing scrolling */
 
     .timeline-item {
       background: white;
