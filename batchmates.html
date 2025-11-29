@@ -34,6 +34,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden; /* Prevent scrolling */
         }
 
         /* Background Circles */
@@ -115,25 +116,30 @@
             75% { transform: translate(10px, 15px) scale(1.05) rotate(1deg); }
         }
 
+        /* Updated batchmates container for full-screen layout */
         .batchmates-container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 25px;
-            padding: 30px;
-            max-width: 1200px;
-            width: 95%;
+            padding: 20px;
+            width: 90%;
+            height: 90vh;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
             z-index: 2;
-            margin: 20px auto;
-            max-height: 95vh;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            /* Center the container both vertically and horizontally */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .batchmates-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .batchmates-header h1 {
@@ -141,100 +147,94 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             margin-bottom: 5px;
         }
 
         .batchmates-header h2 {
             color: var(--purple-primary);
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 500;
         }
 
+        /* Updated layout for full-screen photo */
         .batchmates-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            align-items: start;
-            margin-bottom: 15px;
-            height: 480px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow: hidden;
+            gap: 10px;
+        }
+
+        .batch-photo-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            background: #f8f9fa;
         }
 
         .batch-photo {
             width: 100%;
             height: 100%;
-            border-radius: 15px;
             object-fit: cover;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
-            border: 4px solid white;
-        }
-
-        .names-sidebar {
-            background: white;
             border-radius: 15px;
-            padding: 15px;
+        }
+
+        .names-container {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border-left: 5px solid var(--pink-accent);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            border-top: 3px solid var(--pink-accent);
+            max-height: 120px;
             overflow: hidden;
         }
 
-        .names-header {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            text-align: center;
-            padding-bottom: 8px;
-            border-bottom: 2px solid var(--gradient-soft);
-        }
-
-        .names-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px;
-            font-size: 0.65rem;
-            line-height: 1.2;
-            overflow: hidden;
-            height: 100%;
-            align-items: start;
-        }
-
-        .name-item {
-            padding: 2px 0;
+        .names-paragraph {
+            font-size: 0.7rem;
+            line-height: 1.3;
             color: #495057;
+            text-align: center;
+            margin: 0;
         }
 
-        .name-item.highlight {
+        .highlight {
             color: var(--pink-accent);
             font-weight: 600;
         }
 
+        /* Updated navigation buttons positioning - outside container */
         .navigation-buttons {
             display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
+            justify-content: flex-end;
+            gap: 15px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
         }
 
         .nav-button {
             background: var(--gradient-bg);
             color: white;
             border: none;
-            padding: 8px 18px;
+            padding: 12px 25px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 500;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(255, 154, 139, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 154, 139, 0.3);
         }
 
         .nav-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 154, 139, 0.4);
+            box-shadow: 0 12px 25px rgba(255, 154, 139, 0.4);
             color: white;
         }
 
@@ -322,48 +322,33 @@
             visibility: visible;
         }
 
-        @media (max-width: 1024px) {
-            .batchmates-content {
-                grid-template-columns: 1fr;
-                height: auto;
-                gap: 15px;
-            }
-            .batch-photo {
-                height: 300px;
-            }
-            .names-sidebar {
-                height: 300px;
-            }
-            .batchmates-container {
-                padding: 25px 20px;
-                max-height: 90vh;
-            }
-        }
-
         @media (max-width: 768px) {
             .batchmates-container {
-                padding: 20px 15px;
-                margin: 15px;
-                width: 90%;
+                padding: 15px;
+                width: 95%;
+                height: 95vh;
             }
+            
             .batchmates-header h1 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
+            
             .batchmates-header h2 {
-                font-size: 1rem;
+                font-size: 0.8rem;
             }
-            .batch-photo {
-                height: 250px;
-            }
-            .names-sidebar {
-                height: 250px;
-                padding: 12px;
-            }
-            .names-grid {
+            
+            .names-paragraph {
                 font-size: 0.6rem;
+                line-height: 1.2;
             }
+            
             .sidebar {
                 right: 15px;
+            }
+            
+            .navigation-buttons {
+                right: 15px;
+                bottom: 15px;
             }
         }
     </style>
@@ -422,65 +407,27 @@
             <h2>CITCS 1C 2025</h2>
         </div>
         <div class="batchmates-content">
-            <!-- Batch Photo -->
-            <img src="assets/img/batch-photo.jpg" alt="CITCS 1C 2025 Batch Photo" class="batch-photo">
+            <!-- Batch Photo - Full Screen -->
+            <div class="batch-photo-container">
+                <img src="assets/img/batch-photo.jpg" alt="CITCS 1C 2025 Batch Photo" class="batch-photo">
+            </div>
             
-            <!-- Names Sidebar -->
-            <div class="names-sidebar">
-                <div class="names-header">Class List</div>
-                <div class="names-grid">
-                    <div class="name-item">ABDULKADER, FAISAL</div>
-                    <div class="name-item">ABEN, ZEIUS</div>
-                    <div class="name-item">ABUAN, CRIS</div>
-                    <div class="name-item">AGALED, EDEZIE</div>
-                    <div class="name-item">ALAY-AY, PAUL</div>
-                    <div class="name-item">ALCUIZAR, JUSTIN</div>
-                    <div class="name-item">ANAYDOS, CHEZEN</div>
-                    <div class="name-item">ANTONIO, BLAS</div>
-                    <div class="name-item">ANTONIO, HART</div>
-                    <div class="name-item">ASPILAN, JOCHRISSE</div>
-                    <div class="name-item">BAYAWA, SARRICK</div>
-                    <div class="name-item">BUGNOSEN, JEMIMAH</div>
-                    <div class="name-item">CALIMQUIM, MARIANNE</div>
-                    <div class="name-item">DONATO, TOM</div>
-                    <div class="name-item">DURANTE, JACOB</div>
-                    <div class="name-item highlight">FAJARDO, KATHRYN</div>
-                    <div class="name-item">FAJARDO, KATHRYZ</div>
-                    <div class="name-item">FLORES, MARY</div>
-                    <div class="name-item">GAPASIN, KEN</div>
-                    <div class="name-item">GONZALES, MHARVINNE</div>
-                    <div class="name-item">GUALDO, ROJAN</div>
-                    <div class="name-item">GUERRERO, DEWEY</div>
-                    <div class="name-item">KERYAO, GRACE</div>
-                    <div class="name-item">LORILLA, RONALD</div>
-                    <div class="name-item">LOZANO, KYRO</div>
-                    <div class="name-item">MAHILUM, DHELLMAR</div>
-                    <div class="name-item">MENDOZA, JUSTINE</div>
-                    <div class="name-item">NAPENAS, LEA</div>
-                    <div class="name-item">OBONGEN, GIAN</div>
-                    <div class="name-item">PAGNAS, XHIRO</div>
-                    <div class="name-item">PATIAG, JARED</div>
-                    <div class="name-item">POCLING, TRICIA</div>
-                    <div class="name-item">RAMOS, PRINCESS</div>
-                    <div class="name-item">RODRIGUEZ, HARVEY</div>
-                    <div class="name-item">RODRIGUEZ, SEAN</div>
-                    <div class="name-item">SANTOS, KENT</div>
-                    <div class="name-item">SEVILLA, RONNEL</div>
-                    <div class="name-item">SILIN, CLARK</div>
-                    <div class="name-item">UGADDAN, SHAQUIL</div>
-                    <div class="name-item">VICENTE, EDISON</div>
-                </div>
+            <!-- Names in a single paragraph -->
+            <div class="names-container">
+                <p class="names-paragraph">
+                    ABDULKADER, FAISAL • ABEN, ZEIUS • ABUAN, CRIS • AGALED, EDEZIE • ALAY-AY, PAUL • ALCUIZAR, JUSTIN • ANAYDOS, CHEZEN • ANTONIO, BLAS • ANTONIO, HART • ASPILAN, JOCHRISSE • BAYAWA, SARRICK • BUGNOSEN, JEMIMAH • CALIMQUIM, MARIANNE • DONATO, TOM • DURANTE, JACOB • <span class="highlight">FAJARDO, KATHRYN</span> • FAJARDO, KATHRYZ • FLORES, MARY • GAPASIN, KEN • GONZALES, MHARVINNE • GUALDO, ROJAN • GUERRERO, DEWEY • KERYAO, GRACE • LORILLA, RONALD • LOZANO, KYRO • MAHILUM, DHELLMAR • MENDOZA, JUSTINE • NAPENAS, LEA • OBONGEN, GIAN • PAGNAS, XHIRO • PATIAG, JARED • POCLING, TRICIA • RAMOS, PRINCESS • RODRIGUEZ, HARVEY • RODRIGUEZ, SEAN • SANTOS, KENT • SEVILLA, RONNEL • SILIN, CLARK • UGADDAN, SHAQUIL • VICENTE, EDISON
+                </p>
             </div>
         </div>
-        <div class="navigation-buttons">
-            <a href="family.html" class="nav-button">← Previous</a>
-            <a href="index.html" class="nav-button">Next →</a>
-        </div>
+    </div>
+
+    <!-- Navigation Buttons - Now outside the container -->
+    <div class="navigation-buttons">
+        <a href="family.html" class="nav-button">← Previous</a>
+        <a href="index.html" class="nav-button">Next →</a>
     </div>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
-
